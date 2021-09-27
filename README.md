@@ -6,4 +6,4 @@ It is conjectured that the largest possible persistence for an integer in base 1
 
 This repository includes an attempt to find other integers whose multiplicative persistence is 11, using a brute force search and some of the observations in link (1).
 
-(1) [Sloane, N. J. A. (ed.). "Sequence A003001". The On-Line Encyclopedia of Integer Sequences. OEIS Foundation.](https://en.wikipedia.org/wiki/Persistence_of_a_number)
+(1) [Sloane, N. J. A. (ed.). "Sequence A003001". The On-Line Encyclopedia of Integer Sequences. OEIS Foundation.](https://oeis.org/A003001)
