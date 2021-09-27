@@ -1,13 +1,7 @@
-/*
- * An attempt to find a number with a multiplicative persistence of 12
- */
-
 #include <bits/stdc++.h>
 
 #define ll __int128
-const int s2=150, s3=125, s7=100;
-
-using namespace std;
+const int s0=150, s1=125, s2=100;   	// the exponents of the factors
 
 int prod(ll x) {
     // find the product of the digits of x
@@ -29,46 +23,41 @@ int perst(ll x) {
     return 1+perst(p);
 }
 
-ll mypower(int a, int b) {
-    ll m = a;
-    ll res = 1;
-    while (b) {
-        if (b&1)
-            a += m;
-        m*=a;
-        b>>=1;
-    }
-    return res;
-}
-
 int main() {
-    // assume the only factors are 2,3,7
+    int f[] = {2,3,7};      // the possible factors
 
-    int persistence[s2][s3][s7] = {0};
-    ll p2=1, p3=1, p7=1;
-    for (int i=0; i<s2; i++) {
-        p3=1;
-        for (int j=0; j<s3; j++) {
-            p7=1;
-            for (int k=0; k<s7; k++) {
-                persistence[i][j][k] = perst(p2*p3*p7);
-                p7*=7;
+    // in the loop below, the persistence of the following number is checked (^ denotes raising to a power):
+    // f[0]^i * f[1]^j * f[2]^k
+    int persistence[s0][ s1][ s2] = {0};
+    ll p0=1, p1=1, p2=1;
+    for (int i=0; i < s0; i++) {
+        p1=1;
+        for (int j=0; j < s1; j++) {
+            p2=1;
+            for (int k=0; k < s2; k++) {
+                persistence[i][j][k] = perst(p0 * p1 * p2);
+                p2*=f[2];
             }
-            p3*=3;
+            p1*=f[1];
         }
-        p2*=2;
+        p0*=f[0];
     }
+
+    ofstream ofile;
+    ofile.open("results.txt");
+    ofile<<"results for "<<f[0]<<","<<f[1]<<","<<f[2]<<":"<<std::endl;
     int pp;
-    for (int i=0; i<s2; i++) {
-        for (int j=0; j<s3; j++) {
-            for (int k=0; k<s7; k++) {
+    for (int i=0; i < s0; i++) {
+        for (int j=0; j < s1; j++) {
+            for (int k=0; k < s2; k++) {
                 pp = persistence[i][j][k];
                 if (pp>=10) {
-                    cout<<"2^"<<i<<"*3^"<<j<<"*7^"<<k;
-                    cout<<" has persistence "<<pp<<endl;
+                    ofile<<f[0]<<"^"<<i<<"*"<<f[1]<<"^"<<j<<"*"<<f[2]<<"^"<<k;
+                    ofile<<" has persistence "<<pp<<std::endl;
                 }
             }
         }
     }
+    ofile.close();
     return 0;
 }
