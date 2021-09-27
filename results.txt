@@ -1,0 +1,8 @@
+results for 2,5,7:
+2^86*5^99*7^95 has persistence 10
+results for 2,3,7:
+2^4*3^20*7^5 has persistence 10
+2^18*3^11*7^16 has persistence 10
+2^19*3^4*7^6 has persistence 10
+2^50*3^34*7^1 has persistence 10
+2^62*3^70*7^23 has persistence 10
