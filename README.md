@@ -1,4 +1,4 @@
-# multiplicative-persistence
+# multiplicative persistence
 
 The multiplicative persistence of an integer is the how many times you can replace the number by the product of its digits, before it becomes a single digit.
 
